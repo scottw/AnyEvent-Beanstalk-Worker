@@ -1,0 +1,13 @@
+Changes
+MANIFEST
+Makefile.PL
+README
+eg/null-add.pl
+eg/null.pl
+eg/ssh-add.pl
+eg/ssh.pl
+eg/web-add.pl
+eg/web.pl
+lib/AnyEvent/Beanstalk/Worker.pm
+t/AnyEvent-Beanstalk-Worker.t
+t/shared.pl
