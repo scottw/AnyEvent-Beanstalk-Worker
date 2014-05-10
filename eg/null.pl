@@ -6,17 +6,12 @@ use feature 'say';
 use blib;
 use AnyEvent::Beanstalk::Worker;
 use AnyEvent;
-use JSON;
-use EV;
-
-my @timer = ();
 
 my $w = AnyEvent::Beanstalk::Worker->new
   ( max_jobs => 10000,
     concurrency => 10000,
-    beanstalk_watch   => 'test',
-    beanstalk_decoder => sub { eval { decode_json(shift) } }
-  );
+    initial_state => 'reserved',
+    beanstalk_watch => 'test' );
 
 $w->on(
     reserved => sub {
@@ -30,6 +25,6 @@ $w->on(
 
 $w->start;
 
-EV::run;
+AnyEvent->condvar->recv;
 
 print STDERR "\n";

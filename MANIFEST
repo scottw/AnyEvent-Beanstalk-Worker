@@ -8,6 +8,9 @@ eg/ssh-add.pl
 eg/ssh.pl
 eg/web-add.pl
 eg/web.pl
+eg/web-state-add.pl
+eg/web-state.pl
+eg/WebWorker.pm
 lib/AnyEvent/Beanstalk/Worker.pm
 t/AnyEvent-Beanstalk-Worker.t
 t/shared.pl

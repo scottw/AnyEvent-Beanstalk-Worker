@@ -14,7 +14,9 @@ use JSON;
 use feature 'say';
 
 my $w = AE::BS::Worker->new(
-    max_jobs          => 50,  ## change this for fun
+    concurrency       => 10,
+    max_jobs          => 10,
+    initial_state     => 'fetch',
     beanstalk_watch   => 'web-jobs',
     beanstalk_decoder => sub {
         eval { decode_json(shift) };
@@ -22,13 +24,7 @@ my $w = AE::BS::Worker->new(
 );
 
 $w->on(
-    reserved => sub {
-        shift->emit( run => @_ );
-    }
-);
-
-$w->on(
-    run => sub {
+    fetch => sub {
         my $self = shift;
         my $job  = shift;
 

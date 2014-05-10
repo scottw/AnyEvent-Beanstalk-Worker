@@ -17,6 +17,7 @@ $cv->begin(sub { $_[0]->send("reserved job") }); # cv++; will run when cv == 0
 my $w = new AnyEvent::Beanstalk::Worker
   ( max_jobs => 2,
     concurrency => 1,
+    initial_state => 'reserved',
     beanstalk_watch => "test-$$" );
 
 $w->on(reserved => sub {
@@ -44,6 +45,7 @@ $cv->begin(sub { $_[0]->send("reserved 2 jobs") });
 
 $w = new AnyEvent::Beanstalk::Worker
   ( max_jobs => 2,
+    initial_state => 'reserved',
     beanstalk_watch => "test-$$" );
 
 $w->on(reserved => sub {

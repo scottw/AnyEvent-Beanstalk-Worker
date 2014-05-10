@@ -12,15 +12,10 @@ use AnyEvent::Beanstalk::Worker;
 
 my $w = AnyEvent::Beanstalk::Worker->new(
     max_jobs          => 1,
+    initial_state     => 'run',
     beanstalk_watch   => 'ssh-jobs',
     beanstalk_decoder => sub {
         eval { decode_json(shift) };
-    }
-);
-
-$w->on(
-    reserved => sub {
-        shift->emit( run => @_ );
     }
 );
 

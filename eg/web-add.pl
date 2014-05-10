@@ -16,10 +16,7 @@ else {
     my $ua = Mojo::UserAgent->new;
     my $tx = $ua->get('http://www.uroulette.com/');
 
-#    push @urls, 'http://localhost:3000/?time=15';
-#    push @urls, 'http://localhost:3000/?time=20';
-    push @urls, 'http://localhost:3000/?time=10';
-#    $tx->res->dom->find('blockquote a[href]')->each(sub { push @urls, shift->{href} });
+    $tx->res->dom->find('blockquote a[href]')->each(sub { push @urls, shift->{href} });
 }
 
 my $method = "GET";
