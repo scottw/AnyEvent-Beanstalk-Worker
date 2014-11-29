@@ -1,0 +1,5 @@
+.perl-version
+cpanfile
+cpanfile.snapshot
+local
+.git
