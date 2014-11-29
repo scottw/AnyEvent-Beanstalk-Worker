@@ -1,1 +1,4 @@
 devel
+.perl-version
+cpanfile
+cpanfile.snapshot
