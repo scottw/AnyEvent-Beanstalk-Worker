@@ -40,6 +40,7 @@ sub new {
 
     $self->{_log_ctx} = AnyEvent::Log::ctx;
     $self->{_log_ctx}->title(__PACKAGE__);
+    $self->{_log_ctx}->level($self->{_log_level});
 
     $self->{_log}          = {};
     $self->{_log}->{trace} = $self->{_log_ctx}->logger("trace");
@@ -63,6 +64,7 @@ sub new {
         cb     => sub {
             $self->{_log_level} =
               ( $self->{_log_level} >= 9 ? 2 : $self->{_log_level} + 1 );
+            $self->{_log_ctx}->level($self->{_log_level});
         }
     );
 
