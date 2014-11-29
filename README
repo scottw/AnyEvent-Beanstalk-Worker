@@ -1,4 +1,4 @@
-AnyEvent-Beanstalk-Worker version 0.03
+AnyEvent-Beanstalk-Worker version 0.04
 ======================================
 
 AnyEvent::Beanstalk::Worker is a finite state automaton qua
