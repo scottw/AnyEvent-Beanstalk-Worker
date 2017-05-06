@@ -7,7 +7,7 @@ use AnyEvent;
 use AnyEvent::Beanstalk::Worker;
 BEGIN { eval { require EV } }  ## this is only here to silence a warning I don't understand
 
-do 't/shared.pl';
+do './t/shared.pl';
 
 plan tests => 2;
 
